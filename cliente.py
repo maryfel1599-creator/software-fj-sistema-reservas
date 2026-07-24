@@ -98,3 +98,48 @@ class Cliente(EntidadSistema):
         # Se almacena el documento validado.
         self.__documento = documento_limpio
       
+# Se crea la propiedad nombre.
+    @property
+    def nombre(self):
+        """
+        Devuelve el nombre del cliente.
+        """
+
+return self.__nombre
+
+# Se crea el método setter del nombre.
+    @nombre.setter
+    def nombre(self, valor):
+        """
+        Valida y asigna el nombre del cliente.
+        """
+
+ # Se comprueba que el nombre no sea nulo.
+        if valor is None:
+            raise NombreInvalidoError(
+                "El nombre no puede ser nulo."
+            )
+
+ # Se convierte a texto y se eliminan espacios.
+        nombre_limpio = str(valor).strip()
+
+ # Se comprueba que el nombre no esté vacío.
+        if not nombre_limpio:
+            raise NombreInvalidoError(
+                "El nombre no puede estar vacío."
+            )
+
+ # Se comprueba que tenga una longitud mínima.
+        if len(nombre_limpio) < 3:
+            raise NombreInvalidoError(
+                "El nombre debe tener al menos tres caracteres."
+            )
+
+# Se comprueba que no esté formado únicamente por números.
+        if nombre_limpio.isdigit():
+            raise NombreInvalidoError(
+                "El nombre no puede contener únicamente números."
+            )
+
+# Se almacena el nombre validado.
+        self.__nombre = nombre_limpio
