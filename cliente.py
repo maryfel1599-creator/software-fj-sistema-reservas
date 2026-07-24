@@ -143,3 +143,89 @@ return self.__nombre
 
 # Se almacena el nombre validado.
         self.__nombre = nombre_limpio
+
+# Se crea la propiedad correo.
+@property
+def correo(self):
+    """
+    Devuelve el correo electrónico del cliente.
+    """
+    return self.__correo
+
+# Se crea el método setter para validar y asignar el correo.
+    @correo.setter
+    def correo(self, valor):
+        """
+        Valida y asigna el correo electrónico del cliente.
+        """
+
+ # Se comprueba que el correo no sea nulo.
+        if valor is None:
+            raise CorreoInvalidoError(
+                "El correo no puede ser nulo."
+            )
+
+# Se convierte el correo a texto, se eliminan espacios
+        # y se transforma a minúsculas.
+        correo_limpio = str(valor).strip().lower()
+
+ # Se define una expresión regular para validar el correo.
+        patron_correo = (
+            r"^[A-Za-z0-9._%+-]+@"
+            r"[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+        )
+
+ # Se comprueba que el correo coincida con el patrón.
+        if not re.match(patron_correo, correo_limpio):
+            raise CorreoInvalidoError(
+                "El correo electrónico no tiene un formato válido."
+            )
+
+ # Se almacena el correo validado.
+        self.__correo = correo_limpio
+
+# Se crea la propiedad teléfono.
+    @property
+    def telefono(self):
+        """
+        Devuelve el teléfono del cliente.
+        """
+
+return self.__telefono
+
+# Se crea el método setter para validar y asignar el teléfono.
+    @telefono.setter
+    def telefono(self, valor):
+        """
+        Valida y asigna el teléfono del cliente.
+        """
+
+ # Se comprueba que el teléfono no sea nulo.
+        if valor is None:
+            raise TelefonoInvalidoError(
+                "El teléfono no puede ser nulo."
+            )
+
+ # Se convierte el teléfono a texto y se eliminan espacios.
+        telefono_limpio = str(valor).strip()
+
+# Se comprueba que el teléfono no esté vacío.
+        if not telefono_limpio:
+            raise TelefonoInvalidoError(
+                "El teléfono no puede estar vacío."
+            )
+
+ # Se comprueba que contenga únicamente números.
+        if not telefono_limpio.isdigit():
+            raise TelefonoInvalidoError(
+                "El teléfono solo puede contener números."
+            )
+
+# Se comprueba que tenga entre 7 y 10 dígitos.
+        if len(telefono_limpio) < 7 or len(telefono_limpio) > 10:
+            raise TelefonoInvalidoError(
+                "El teléfono debe tener entre 7 y 10 dígitos."
+            )
+
+ # Se almacena el teléfono validado.
+        self.__telefono = telefono_limpio
