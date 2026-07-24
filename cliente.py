@@ -227,5 +227,28 @@ return self.__telefono
                 "El teléfono debe tener entre 7 y 10 dígitos."
             )
 
- # Se almacena el teléfono validado.
+  # Se almacena el teléfono validado.
         self.__telefono = telefono_limpio
+
+
+         # Se sobrescribe el método abstracto de la clase padre.
+    def obtener_informacion(self):
+        """
+        Devuelve la información completa del cliente.
+        """
+
+  # Se construye y retorna una cadena con los datos.
+        return (
+            f"Documento: {self.__documento} | "
+            f"Nombre: {self.__nombre} | "
+            f"Correo: {self.__correo} | "
+            f"Teléfono: {self.__telefono}"
+        )    
+# Se sobrescribe el método especial __str__.
+    def __str__(self):
+        """
+        Devuelve una representación legible del cliente.
+        """
+
+        # Se reutiliza el método obtener_informacion.
+        return self.obtener_informacion()
