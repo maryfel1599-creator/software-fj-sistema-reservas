@@ -38,3 +38,63 @@ class TelefonoInvalidoError(ErrorCliente):
     """Se genera cuando el teléfono contiene datos incorrectos."""
 
     pass
+
+# Se crea una excepción general para errores de servicios.
+class ErrorServicio(ErrorSistemaFJ):
+    """Se genera cuando ocurre un error relacionado con un servicio."""
+
+    pass
+
+# Se crea una excepción para servicios que no se encuentran disponibles.
+class ServicioNoDisponibleError(ErrorServicio):
+    """Se genera cuando se intenta reservar un servicio no disponible."""
+
+    pass
+
+# Se crea una excepción para tarifas inválidas.
+class TarifaInvalidaError(ErrorServicio):
+    """Se genera cuando una tarifa es igual o menor que cero."""
+
+    pass
+
+# Se crea una excepción para parámetros incorrectos de los servicios.
+class ParametroServicioError(ErrorServicio):
+    """Se genera cuando un servicio recibe parámetros inválidos."""
+
+    pass
+
+# Se crea una excepción general para errores de reservas.
+class ErrorReserva(ErrorSistemaFJ):
+    """Se genera cuando ocurre un problema con una reserva."""
+
+    pass
+
+# Se crea una excepción para duraciones incorrectas.
+class DuracionInvalidaError(ErrorReserva):
+    """Se genera cuando la duración de la reserva es inválida."""
+
+    pass
+
+# Se crea una excepción para estados no permitidos.
+class EstadoReservaError(ErrorReserva):
+    """Se genera cuando una operación no corresponde al estado de la reserva."""
+
+    pass
+
+# Se crea una excepción para reservas que no existen.
+class ReservaNoEncontradaError(ErrorReserva):
+    """Se genera cuando no se encuentra una reserva solicitada."""
+
+    pass
+
+# Se crea una excepción para clientes que no existen.
+class ClienteNoEncontradoError(ErrorCliente):
+    """Se genera cuando no se encuentra un cliente solicitado."""
+
+    pass
+
+# Se crea una excepción para servicios que no existen.
+class ServicioNoEncontradoError(ErrorServicio):
+    """Se genera cuando no se encuentra un servicio solicitado."""
+
+    pass
