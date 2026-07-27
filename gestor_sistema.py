@@ -63,7 +63,7 @@ class GestorSistema:
             f"Cliente agregado al gestor: {cliente.documento}"
         )
 
-def registrar_servicio(self, servicio):
+    def registrar_servicio(self, servicio):
         """
         Registra un servicio en la lista interna.
         """
