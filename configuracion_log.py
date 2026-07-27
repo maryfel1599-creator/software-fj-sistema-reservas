@@ -4,11 +4,13 @@ Archivo: configuracion_log.py
 Este módulo configura el sistema de registros de eventos y errores
 del Sistema Integral de Gestión de Software FJ.
 """
-#Se importa el módulo logging para registrar eventos y errores.
+
+# Se importa el módulo logging para registrar eventos y errores.
 import logging
 
-#Se importa os para gestionar rutas y crear carpetas.
+# Se importa os para gestionar rutas y crear carpetas.
 import os
+
 
 # Se define el nombre de la carpeta donde se almacenarán los logs.
 CARPETA_LOGS = "logs"
@@ -36,9 +38,11 @@ logging.basicConfig(
 
     # Se establece la codificación para admitir caracteres especiales.
     encoding="utf-8"
+)
 
-  # Se crea un logger específico para el sistema Software FJ.
+# Se crea un logger específico para el sistema Software FJ.
 logger = logging.getLogger("SoftwareFJ")
+
 
 # Esta función registra eventos normales del sistema.
 def registrar_evento(mensaje):
@@ -49,6 +53,7 @@ def registrar_evento(mensaje):
     # El mensaje se guarda con nivel INFO.
     logger.info(mensaje)
 
+
 # Esta función registra advertencias.
 def registrar_advertencia(mensaje):
     """
@@ -58,6 +63,7 @@ def registrar_advertencia(mensaje):
     # El mensaje se guarda con nivel WARNING.
     logger.warning(mensaje)
 
+
 # Esta función registra errores controlados.
 def registrar_error(mensaje):
     """
@@ -66,6 +72,7 @@ def registrar_error(mensaje):
 
     # El mensaje se guarda con nivel ERROR.
     logger.error(mensaje)
+
 
 # Esta función registra errores junto con su traza técnica.
 def registrar_excepcion(mensaje):
