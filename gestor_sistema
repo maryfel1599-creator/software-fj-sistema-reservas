@@ -1,0 +1,64 @@
+"""
+Archivo: gestor_sistema.py
+
+Este módulo administra las listas internas de clientes,
+servicios y reservas del sistema.
+"""
+
+# Se importan las clases principales.
+from cliente import Cliente
+from servicios import Servicio
+from reserva import Reserva
+
+# Se importan las excepciones de búsqueda y duplicados.
+from excepciones import (
+    ClienteNoEncontradoError,
+    ServicioNoEncontradoError,
+    ReservaNoEncontradaError,
+    RegistroDuplicadoError
+)
+
+# Se importa el registro de eventos.
+from configuracion_log import registrar_evento
+
+
+# Se crea la clase GestorSistema.
+class GestorSistema:
+    """
+    Administra clientes, servicios y reservas sin base de datos.
+    """
+
+    def __init__(self):
+        """
+        Inicializa las listas internas del sistema.
+        """
+
+        self._clientes = []
+        self._servicios = []
+        self._reservas = []
+
+        registrar_evento(
+            "Gestor del sistema inicializado."
+        )
+
+    def registrar_cliente(self, cliente):
+        """
+        Registra un cliente en la lista interna.
+        """
+
+        if not isinstance(cliente, Cliente):
+            raise TypeError(
+                "El objeto recibido debe ser un Cliente."
+            )
+
+        for cliente_registrado in self._clientes:
+            if cliente_registrado.documento == cliente.documento:
+                raise RegistroDuplicadoError(
+                    f"El cliente {cliente.documento} ya está registrado."
+                )
+
+        self._clientes.append(cliente)
+
+        registrar_evento(
+            f"Cliente agregado al gestor: {cliente.documento}"
+        )
