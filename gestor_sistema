@@ -164,3 +164,35 @@ def registrar_servicio(self, servicio):
         raise ReservaNoEncontradaError(
             f"No se encontró la reserva {codigo_buscado}."
         )
+
+    def listar_clientes(self):
+        """
+        Devuelve una copia de la lista de clientes.
+        """
+
+        return self._clientes.copy()
+
+    def listar_servicios(self):
+        """
+        Devuelve una copia de la lista de servicios.
+        """
+
+        return self._servicios.copy()
+
+    def listar_reservas(self):
+        """
+        Devuelve una copia de la lista de reservas.
+        """
+
+        return self._reservas.copy()
+
+    def obtener_resumen(self):
+        """
+        Devuelve los totales almacenados en el sistema.
+        """
+
+        return (
+            f"Clientes: {len(self._clientes)} | "
+            f"Servicios: {len(self._servicios)} | "
+            f"Reservas: {len(self._reservas)}"
+        )
